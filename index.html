@@ -1,0 +1,1052 @@
+<link rel="stylesheet" href="styles.css">
+
+<section class="section1">
+
+    <div style="margin-bottom: 20px;">
+        <h1>ROS Porting: Resolution Required Resolutions</h1>
+
+        <p>Select a resolution required code from the list below to see the appropriate solution for either port-ins or port-outs.</p>
+
+        <p>
+        <select id="selectResolution" onchange="showInfo(this.value)">
+            <option value="Select a resolution required code" disabled selected>Select a resolution required code</option>
+            <option value="PIAF">Port In Activation Fail In TLG</option>
+            <option value="icte">IC Timer Expired</option>
+            <option value="MDN">Not Eligible For Port In: MDN Belongs To Another Port-In Request</option>
+            <option value="1P">1P - (Multiple Reasons)</option>
+            <option value="6A">6A - MDN Not Found</option>
+            <option value="6B">6B - Number Transfer PIN Required or Incorrect / Account Lock</option>
+            <option value="6C">6C - Customer Information Does Not Match</option>
+            <option value="6D">6D - MDN Not Active</option>
+            <option value="6G">6G - Port Complexity</option>
+            <option value="6M">6M - Duplicate Port request with another service provider</option>
+            <option value="6N">6N - Duplicate Port Request</option>
+            <option value="6P">6P - MDN has service provider port protection</option>
+            <option value="8A">8A - Account number required or incorrect</option>
+            <option value="8C">8C - Password/PIN required or incorrect</option>
+            <option value="8D">8D - Zip code required or incorrect</option>
+            <option value="8E">8E - First name required or incorrect </option>
+            <option value="8F">8F - Last name required or incorrect </option>
+            <option value="OTH">Code not listed / All other codes</option>
+        </select>
+    </p>
+        
+    </div>
+
+    <div id="targetDiv" class="PIAF" style="display: none;">
+
+    </div>
+
+
+
+    <!--Port In Activation Failed in TLG -->
+
+    <div id="portInActivationFailed" style="text-align: left; display: none;" class="PIAF">
+        <p>Telegence (TLG) performs a series of checks to validate and activate the cellular number(s) in the port-in request. If one of these checks do not pass, the port will 
+            fail to activate in TLG.
+        </p>
+
+        
+        <h3>Solution: </h3>
+
+        <div>
+            <p>- <a href="https://learning.cricketwireless.com/student/activity/2019431-ros-servicenow-ticket-handling" target="_blank">Create an AMDOCS Ticket.</a></p>
+            <p><i>There is no need to contact Tier 2.</i></p>
+
+        </div>
+
+        <div>
+            <h3>ServiceNow Ticket: </h3>
+            <p>After creating an AMDOCS ticket, use the appropriate verbiage below to finish the ticket in ServiceNow.</p>
+
+            <ul>
+                <li style="margin-bottom: 12px; font-weight: bold;">Short Description</li>
+                <ul style="margin-bottom: 12px;"><i>CTN: <input type="text" class="PIAFinput" placeholder="Enter Customers Number"> Port In Activation Failed in TLG.</i></ul>
+                <ul><button type="button" class="PIAFbutton" onclick="copyAmdocs(1)">Copy Text</button></ul>
+            </ul>
+
+            <ul>
+                <li style="margin-bottom: 12px; font-weight: bold;">Description</li>
+                <ul style="margin-bottom: 12px;"><i>AMDOCS - Please replay activation of port request # <input type="text" class="PIAFinput" placeholder="Enter Port Request Number"> for CTN <input type="text" class="PIAFinput" placeholder="Enter Customers Number"> on BAN <input type="text" class="PIAFinput" placeholder="Enter BAN Number"></i></ul>
+                <ul><button type="button" class="PIAFbutton" onclick="copyAmdocs(2)">Copy Text</button></ul>
+            </ul>
+
+            <h3>ServiceNow Classification: </h3>
+            <img src="PIAF.png" class="imgsrc1">
+            
+        </div>
+
+
+        <div>
+            <h3>Exceed Article for Reference:</h3>
+            <ul><a href="https://learning.cricketwireless.com/student/activity/1232326-ros-port-in-activation-fail-in-tlg" target="_blank">ROS: Port In Activation Failed in TLG</a></ul>
+        </div>
+        
+        
+
+    </div>
+
+
+    <!-- IC Timer Expired -->
+
+    <div id="icTimer" class="PIAF" style="display: none;">
+
+        <p>"IC Timer Expired", typically indicates an issue with the old service provider's (OSP) system. Either it's heavily loaded or there is a system issue that's
+            preventing a response after 30 minutes. 
+        </p>
+
+        <h3>Solution: </h3>
+
+        <ul>
+            <li>Contact the OSP to provide a manual response.</li>
+            <ul>
+                <li>Advise the AR to not cancel and resubmit port request. AR must wait for the system to clear and for a response to be generated.</li>
+            </ul>
+        </ul>
+
+        <ul>
+            <li>If the OSP cannot generate a manual response, advise the AR and customer to wait an additional 30 minutes for an update on the port request(s).</li>
+            <ul><li>After 30 minutes, if there is no response, advise the AR to cancel and resubmit the port request(s).</li></ul>
+        </ul>
+
+        <h3>ServiceNow Classification</h3>
+
+        <img class="imgsrc1" src="ICtimer.png">
+
+        <h3>Exceed Article for Reference:</h3>
+        <ul><a href="https://learning.cricketwireless.com/student/activity/1232327-ros-ic-timer-expired" target="_blank">ROS: IC Timer Expired</a></ul>
+
+
+
+    </div>
+
+    <!-- Not Eligible for Port In -->
+
+    <div id="notEligible" class="PIAF" style="display: none;">
+
+        <img class="imgsrc1" src="notEligibleToPortin.png" style="width: 85%;">
+
+        <p>This indicates there is an active port request open for CTN.</p>
+
+        <h3>Solution: </h3>
+        <ul>
+            <li><a href="https://learning.cricketwireless.com/student/activity/2019431-ros-servicenow-ticket-handling" target="_blank">Create an AMDOCS Ticket</a></li>
+        </ul>
+
+
+        <div>
+            <h3>ServiceNow Ticket: </h3>
+            <p>After creating an AMDOCS ticket, use the appropriate verbiage below to finish the ticket in ServiceNow.</p>
+
+            <ul>
+                <li style="margin-bottom: 12px; font-weight: bold;">Short Description</li>
+                <ul style="margin-bottom: 12px;"><i>CTN: <input type="text" class="PIAFinput" placeholder="Enter Customers Number"> Please cancel all pending port requests. </i></ul>
+                <ul><button type="button" class="PIAFbutton" onclick="copyAmdocs(3)">Copy Text</button></ul>
+            </ul>
+
+            <ul>
+                <li style="margin-bottom: 12px; font-weight: bold;">Description</li>
+                <ul style="margin-bottom: 12px;"><i>AMDOCS - Please cancel all pending port requests for CTN <input type="text" class="PIAFinput" placeholder="Enter Customers Number"> as it is causing the eligibility check to fail.</i></ul>
+                <ul><button type="button" class="PIAFbutton" onclick="copyAmdocs(4)">Copy Text</button></ul>
+            </ul>
+            
+
+            <h3>ServiceNow Classification: </h3>
+            <img src="notEligible.png" class="imgsrc1">
+            
+        </div>
+
+        <h3>Exceed Article for Reference:</h3>
+        <ul><a href="https://learning.cricketwireless.com/student/activity/1232328-ros-not-eligible-for-port-in-mdn-belongs-to-another-port-in-request" target="_blank">ROS: Not Eligible for Port In - MDN Belongs to Another Port-In Request</a></ul>
+
+    </div>
+
+
+    <!-- 1P Multiple Reasons -->
+
+    <div id="1pMultipleReasons" class="PIAF" style="display: none;">
+
+        <h3>1P - Multiple Reasons </h3>
+        <ul>
+            <b>Reasons 1P may occur</b>
+            <ul>
+                <li>MDN Exists in another request.</li>
+                <li>Not related to BAN.</li>
+                <li>MDN not eligible to port.</li>
+                <li>Port out confirm required prior to DD/T configuration.</li>
+            </ul>
+        </ul>
+
+        <h3>Solution: </h3>
+        <ul>
+            <p>Check SMG notes to get further context on the port request and contact the OSP to receive assistance.</p>
+        </ul>
+
+        <h3>ServiceNow Classification: </h3>
+        <img src="1P.png" class="imgsrc1">
+
+        <h3>Exceed Article for Reference: </h3>
+        <ul><a href="https://learning.cricketwireless.com/student/activity/1406155-ros-resolution-required-1p-multiple-reasons" target="_blank">ROS: Resolution Required - 1P - (Multiple Reasons)</a></ul>
+
+
+    </div>
+
+
+    <!-- 6A MDN Not Found -->
+
+    <div id="MDNnotFound" class="PIAF" style="display: none;">
+
+        <p><b>Definition: </b>The cellular number in the port request is not owned by the service provider.</p>
+        <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
+
+        <div class="buttonContainer">
+            <button type="button" class="PIAFbutton" onclick="showPortIn(6)">Port-In</button>
+            <button type="button" class="PIAFbutton" onclick="showPortOut(6)">Port-out</button>
+        </div>
+
+        <div id="mdnPortIn" style="display: none;">
+            <h3>Solution: </h3>
+            <ul><b>Check PEARS to determine the correct current service provider.</b>
+                <ul>
+                    <li>Compare the information in PEARS to the information in the port request.</li>
+                    <li>If the information in the port request is incorrect, the request must be cancelled and resubmitted with the correct information.</li>
+                </ul>
+                
+            </ul>
+
+            <ul><b>Example: </b></ul>
+            <ul><img style="width: 100%;" src="PEARS.png" class="imgsrc1"></ul>
+
+            <ul><b>Information in PEARS and port request match.</b>
+                <ul>
+                    <li>If the current service provider is AT&T - Contact Tier 2 to have a WebTrax ticket created.</li>
+                    <li>If it's any other carrier - Contact the current service provider to have the CTN reactivated and advise the AR to resubmit the port request after. 
+                        If the current service provider cannot assist, contact Tier 2.
+                    </li>
+                </ul>
+            
+            </ul>
+
+        <h3>Exceed Article for Reference: </h3>
+        <ul><a href="https://learning.cricketwireless.com/student/activity/1232329-ros-mdn-not-found" target="_blank">ROS: Resolution Required - 6A - MDN Not Found</a></ul>
+
+
+        </div>
+
+        <div id="mdnPortOut" style="display: none; margin-top: 30px;">
+            <p>When customers are active with Cricket and attempting to port out, the port request is routing to AT&T instead of Cricket.</p>
+            <h3>Solution: </h3>
+            <ul>Contact Tier 2 to have a WebTrax Ticket created.</ul>
+
+            <h3>Exceed Article for Reference: </h3>
+            <ul><a href="https://learning.cricketwireless.com/student/activity/1232329-ros-mdn-not-found" target="_blank">ROS: Resolution Required - 6A - MDN Not Found</a></ul>
+
+        </div>
+
+
+        
+
+    </div>
+
+    <!-- NTP Required or Incorrect / Account Lock -->
+    <div id="ntpRequired" class="PIAF" style="display: none;">
+
+        <p><b>Definition: </b>6B will generate if port request has an incorrect or missing number transfer pin (NTP). This is to protect against unauthorized port out activity.</p>
+        <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
+
+        <div class="buttonContainer">
+            <button type="button" class="PIAFbutton" onclick="showPortIn(7)">Port-In</button>
+            <button type="button" class="PIAFbutton" onclick="showPortOut(7)">Port-out</button>
+        </div>
+
+        <div id="ntpPortIn" style="display: none;">
+            <h3>Solution: </h3>
+            <p>Contact the customer's current service provider to obtain the correct number transfer pin (NTP). Once the NTP is obtained, advise the AR to update the port-in request in Aktivate.</p>
+
+
+            <div>
+
+                <ul style="line-height: 1.5;"><b>Major Companies which need an NTP:</b>
+                <ul>
+                    <li>T-Mobile</li>
+                    <ul>
+                        <li>Advise customer to dial <b>611</b> on their device to request a number transfer pin. Customer will be required to follow verification steps.</li>
+                        <li><a href="https://learning.cricketwireless.com/student/activity/1280543-ros-resolution-required-6b-number-transfer-pin-required-or-incorrect" target="_blank">ROS: Resolution Required - 6B - Number Transfer Pin Required or Incorrect</a></li>
+                    </ul>
+                    <li>AT&T</li>
+                    <ul>
+                        <li>Advise customer to call <b>*PORT</b> on their AT&T device and follow prompts to receive NTP</li>
+                        <li>Use the <b>myATT app</b> on the customer's device. Navigate to <b>Profile</b> and select <b>People & Permissions</b> to request a new transfer pin.</li>
+                        <li>Contact ATT's porting department if customer needs further assistance obtaining the NTP</li>
+                    </ul>
+                    <li>Verizon</li>
+                    <ul>
+                        <li>A 6 digit transfer pin is required porting out from Verizon. Advise customer to dial <b>#PORT</b> from their Verizon Device or obtain the 
+                        NTP via the <b>My Verizon App</b>.</li>
+                        <li>Contact Verizon's porting department if customer needs further assistance obtaining the NTP. </li>
+                        <li><a href="https://learning.cricketwireless.com/student/page/540373-porting-transferring-from-verizon-rr-6p?sid=b5fcef02-54d4-49d1-a853-ff6027fb3b69&sid_i=0" target="_blank">Porting: Transferring from Verizon (RR 6B)</a></li>
+                    </ul>
+                </ul>
+            
+            </ul>
+
+            <ul style="line-height: 1.5;"><b>Dealing with a Verizon Number Lock</b>
+                <ul>
+                    <li>Advise the customer to turn off number lock feature via the <b>My Verizon App.</b></li>
+                    <li>In the My Verizon App, open the <b>Menu</b> and tap <b>Account.</b></li>
+                    <li>Tap <b>Account Settings.</b></li>
+                    <li>Tap <b>Number Lock.</b></li>
+                    <li>Tap the toggle to turn off Number Lock.</li>
+                    <li>Once the Number Lock is removed, advise the AR to resubmit the port request.</li>
+                    <li><a href="https://learning.cricketwireless.com/student/page/540373-porting-transferring-from-verizon-rr-6p?sid=b5fcef02-54d4-49d1-a853-ff6027fb3b69&sid_i=0" target="_blank">Porting: Transferring from Verizon (RR 6B)</a></li>
+                </ul>
+            </ul>
+
+            </div>
+            
+
+            <h3>Verbiage: </h3>
+            <i>When contacting the OSP use verbiage below.</i>
+            <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+            I have a customer who is porting their number to Cricket and I need assistance 
+            with a 6B number transfer pin required or incorrect. I also have the customer available 
+            and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
+
+        </div>
+
+        <div id="ntpPortOut" style="display: none;">
+
+            <p style="font-weight: bold; margin-top: 50px;">A 6B can also trigger if there is an account lock on a Cricket Wireless account. The account lock feature can be enabled on the account.</p>
+
+            <img class="imgsrc1" src="smgAccountlock.png" style="width: 100%;">
+
+            <p style="font-weight: bold;">Verify the Account Lock is enabled in Voyage.</p>
+
+            <img class="imgsrc1" src="accountLock.png" style="width: 100%;">
+
+            <h3>Solution: </h3>
+            <ul style="line-height: 1.6;">
+                <li style="font-weight: bold;">Customer must turn off account lock via the myCricketApp.</li>
+                <ul>
+                    <li>The account lock cannot be removed by the helpdesk, an AR or care. If the customer cannot remove the account lock, they must speak with care
+                        to have a case created to have the account lock removed.
+                    </li>
+                </ul>
+                <li style="font-weight: bold;">Provide the customer the following instructions to remove account lock.</li>
+                <ul>
+                    <li>Navigate into the <b>myCricket App</b> and select <b>Settings</b> (Gear icon on the top right).</li>
+                    <li>Under <b>Security</b>, click <b>Account Lock</b>.</li>
+                    <li>Click <b>Continue</b>.</li>
+                    <li>An OTP will be sent to the customer's mobile device. It will prompt the customer to enter the OTP onto the verification screen in the app to 
+                        turn off the account lock. </li>
+                    <li>Once the account lock is disabled, the port request can be resubmitted.</li>
+                </ul>
+            </ul>
+
+            <h3>Exceed Article for Reference: </h3>
+            <ul><a href="https://learning.cricketwireless.com/student/activity/2098511-ros-resolution-required-6b-remove-account-lock-at-cricket-wireless" target="_blank">ROS: Resolution Required - 6B - Remove Account Lock at Cricket Wireless</a></ul>
+            
+
+        </div>
+
+    </div>
+
+
+    <!--6C Customer's info does not match -->
+
+
+    <div id="customerInfo6c" class="PIAF" style="display: none;">
+
+        <p><b>Definition: </b>6C - Customer's Information Does Not Match</p>
+
+        <ul>Multiple pieces of a customer account info are incorrect in the port request, at least two of the following below: 
+            <ul>
+                <li>Account Number</li>
+                <li>Zip Code</li>
+                <li>PIN</li>
+                <li>First Name</li>
+                <li>Last Name</li>
+                <li>Address</li>
+            </ul>
+        </ul>
+
+        <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
+
+        <div class="buttonContainer">
+            <button type="button" class="PIAFbutton" onclick="showPortIn(8)">Port-In</button>
+            <button type="button" class="PIAFbutton" onclick="showPortOut(8)">Port-out</button>
+        </div>
+
+        <div id="6cPortIn" style="display: none;">
+
+            <h3>Solution: </h3>
+            <ul style="line-height: 1.5;"><b>Review the notes on the port request in SMG to determine what particular information is incorrect.</b>
+                <ul>
+                    <li>Contact the OSP to receive the correct customer's information for the port request.</li>
+                    <li>Once the correct information is retrieved, advise the AR to modify the port request in Aktivate to fill in the correct information and resubmit the port request. </li>
+                    <li><a href="https://learning.cricketwireless.com/student/page/3292798-ros-porting-port-in-resolution-required-6c?sid=a6645430-eda2-491d-a4ff-c42d7f895ee2&sid_i=4" target="_blank">ROS Porting: Port-In Resolution Required 6C</a></li>
+                </ul>
+            </ul>
+
+            <h3>Verbiage: </h3>
+            <i>When contacting the OSP use verbiage below.</i>
+            <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+            I have a customer who is porting their number to Cricket and I need assistance 
+            with a 6C - Customer's information does not match. I also have the customer available 
+            and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
+
+        </div>
+
+        <div id="6cPortOut" style="margin-top: 50px; display: none;">
+
+            <p>An NSP may contact the RHD to assist with obtaining correct account information for a port request. 
+                It is important to verify the customer's information before proceeding to provide the customer their 
+                 correct account info.</p>
+
+            
+
+            <h3 >Solution: </h3>
+
+            <ul style="line-height: 1.5;"><b>Verification Checklist: </b>
+
+                <ul>
+                    <li><b style="color: red">Important: </b> RHD must speak with the customer to verify the information below.</li>
+                    <ul>
+
+                        <li><b>Note: </b>If account cannot be accessed with customer's pin or security question, advise the customer to visit their local cricket wireless store to perform an account bypass request.</li>
+                    <li><b>Note: </b>If the customer is <b>not</b> on the phone with the NSP, advise the NSP to call back with the customer for appropriate verification.</li>
+                        
+                    </ul>
+                    
+                    <li>Verify Customer's Full Name</li>
+                    <li>Verify Customer's  4-digit pin number or security question in Voyage.</li>
+                </ul>
+            </ul>
+            
+            <ul>
+                Once the account has been successfully accessed, provide the customer their correct account information for a successful port out.
+            </ul>
+                
+        </div>
+        
+
+    </div>
+
+
+    <!-- 6D MDN Not Active  -->
+
+    <div id="mdnNotActive6d" class="PIAF" style="display: none;">
+
+        <p><b>Definition: </b>6D - MDN Not Active</p>
+
+        <p>The cellular number being ported is no longer active with their current service provider.</p>
+
+        <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
+
+        <div class="buttonContainer">
+            <button type="button" class="PIAFbutton" onclick="showPortIn(9)">Port-In</button>
+            <button type="button" class="PIAFbutton" onclick="showPortOut(9)">Port-out</button>
+        </div>
+
+        <div id="mdn6dPortIn" style="display: none;">
+
+            <h3>Solution: </h3>
+
+            <ul style="line-height: 1.5;"><b>Verify the CTN and OSP is correct in the port request.</b>
+                <ul>
+                    <li>If the information in the porting request is incorrect, advise the AR the request should be cancelled and resubmitted with the correct information.</li>
+                </ul>
+            </ul>
+
+            <ul style="line-height: 1.5;">
+                <b>If the CTN and OSP is correct.</b>
+                <ul>
+                    <li>This indicates the service is no longer active on the CTN with the OSP.</li>
+                    <li>Advise the <b>customer to contact</b> the OSP to have their cellular number reinstated.</li>
+                    <li>Once the service is restored with the OSP, advise the AR they will need to resubmit the port request.</li>
+                </ul>
+            </ul>
+
+            <ul><a href="https://learning.cricketwireless.com/student/activity/1600790-ros-resolution-required-6d-mdn-not-active" target="_blank">ROS: Resolution Required - 6D - MDN Not Active</a></ul>
+
+            <h3>Verbiage: </h3>
+            <i>When contacting the OSP use verbiage below.</i>
+            <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+            I have a customer who is porting their number to Cricket and I need assistance 
+            with a 6D - MDN Not Active. I also have the customer available 
+            and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
+
+
+        </div>
+
+
+        <div id="mdn6dPortOut" style="display: none; margin-top: 30px;">
+
+            <p>An NSP may contact the RHD to assist with a cellular number which reads MDN not active on Cricket's network. 
+                It is important to verify the customer's information. <b>Do not continue</b> if you are unable to verify the customer.</p>
+
+            <h3>Solution: </h3>
+
+            <ul style="line-height: 1.5;">
+                <b>Verification Checklist: </b>
+                <ul>
+                    <li>You must speak with the customer. </li>
+                    <li>Verify Customer's Full Name.</li>
+                </ul>
+            </ul>
+
+            <ul style="line-height: 1.5;"><b>Check Voyage to verify the status of the customer's cellular number.</b>
+                <ul>
+                    <li>The cellular number will likely either be suspended or cancelled.</li>
+                    <li>Refer the NSP to contact Cricket customer care to reinstate the customer's cellular number.</li>
+                </ul>
+            </ul>
+
+            <ul><a href="https://learning.cricketwireless.com/student/activity/1600790-ros-resolution-required-6d-mdn-not-active" target="_blank">ROS: Resolution Required - 6D - MDN Not Active</a></ul>
+
+            
+
+        </div>
+
+    </div>
+
+
+    <!-- 6G Delay -->
+
+    <div id="delay6g" class="PIAF" style="display: none;">
+
+        <p><b>Definition: </b>6G - Port Complexity</p>
+        <p>This resolution required means the port is in delay, awaiting for a response from their current service provider.</p>
+
+        <h3>Solution: </h3>
+
+        <ul style="line-height: 1.5;">
+            <b>Contact the OSP </b>
+            <ul>
+                <li>Request for a manual response on the port request.</li>
+                <li>Ask if there are any issues on their end that may be causing the delay.</li>
+                <li>If a manual response cannot be initiated due to the service provider's automated porting system, <b>advise the AR and customer</b> to please 
+                wait 24-48 hours for an automated response on the port request.</li>
+                <li>If an automated response has not been generated after 48 hours, the port request will need to be cancelled and resubmitted.</li>
+            </ul>
+        </ul>
+
+        <ul><a href="https://learning.cricketwireless.com/student/activity/1600790-ros-resolution-required-6g-port-complexity" target="_blank">ROS: Resolution Required - 6G - Port Complexity</a></ul>
+
+        <h3>Verbiage: </h3>
+            <i>When contacting the OSP use verbiage below.</i>
+            <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+            I have a customer who is porting their number to Cricket Wireless and I need assistance 
+            with a 6G Port Delay. I also have the customer available 
+            and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
+
+    </div>
+
+
+    <div id="duplicate6M" class="PIAF" style="display: none;">
+
+        <p><b>Definition: </b> 6M - Duplicate port request with another service provider.</p>
+
+        <h3>Solution: </h3>
+
+        <ul>
+            <b>Another port request exists with another service provider.</b>
+        </ul>
+
+        <ul style="line-height: 1.5;">
+            <b>Advise the AR to confirm with the customer whether they have attempted to port the number to another carrier within the last 30 days.</b>
+
+            <ul>
+                <li>If a pending port request with another carrier exists, advise the customer they will <b>need</b> to contact the carrier and cancel the port request.</li>
+                <li>If customer is unsure if there is a pending port request, advise the customer to contact their current service provider to verify if there are any active
+                    port out requests on the account.
+                </li>
+            </ul>
+        </ul>
+
+        <ul>
+            <b>Once the other pending port request is cancelled, the port in request to Cricket can be modified and resubmitted.</b>
+        </ul>
+
+        <ul><a href="https://learning.cricketwireless.com/student/activity/1374014-ros-resolution-required-6m-duplicate-port-request-with-another-service-provider" target="_blank">ROS: Resolution Required - 6M - Duplicate Port Request with Another Service Provider</a></ul>
+
+    </div>
+
+    <div id="duplicatePort6N" class="PIAF" style="display: none;">
+
+        <p><b>Definition: </b>6N - Duplicate request - port request is already pending.</p>
+        <p>This means there is a duplicate pending port request in the system for the cellular number. </p>
+
+        <ul>There are several instances which will trigger a 6N - Duplicate port request. Below will be the most common solutions for these instances.</ul>
+
+        <ul>Please visit exceed article for further details.
+            <ul>
+                <li><a href="https://learning.cricketwireless.com/student/page/3292074-ros-porting-port-in-resolution-required-6n?sid=f60804ef-e071-427d-820b-e20753496964&sid_i=5" target="_blank">ROS Porting: Port-In Resolution Required 6N</a></li>
+            </ul>
+        </ul>
+
+
+        <h3>Solution: </h3>
+
+        <ul style="line-height: 1.7;">
+            <b>Common Solutions: </b>
+            <ul>
+                <li>Contact Tier 2 to first cancel the prior port request before continuing to cancel the latest request receiving a 6N resolution required.</li>
+            <li>Await for further instructions from Tier 2. RHD may need to contact the OSP to verify for certain a cancellation is seen on their end. 
+                Resubmitting a new port request after verification of cancellation on the OSP's end may be necessary to clear the 6N from the system.
+            </li>
+
+            </ul>
+            
+        </ul>
+
+        <ul style="line-height: 1.5;">
+            <b>Dealing with Verizon Numbers:</b>
+            <ul>
+                <li>Verify the NLSP and NNSP in SMG.</li>
+                <li>If the NNSP does not match the Cricket SPID of X508 under the NLSP, this indicates there is a duplicate port request. <i>See reference picture below</i></li>
+                <img class="imgsrc1" src="thirdInstance.png" style="width: 100%; margin-top: 20px;">
+                <li><b>Advise the customer</b> to contact the related carrier which has the customer's pending port request and advise to cancel the request on their behalf.</li>
+                <li>Tier 2 does not need to be contacted for this unless an issue arises which needs further review.</li>
+                <li>Visit Exceed Article for more information: <a href="https://learning.cricketwireless.com/student/page/3292074-ros-porting-port-in-resolution-required-6n?sid=f60804ef-e071-427d-820b-e20753496964&sid_i=5" target="_blank">ROS Porting: Port-In Resolution Required 6N</a></li>
+            </ul>
+        </ul>
+
+    </div>
+
+    <!-- 6P - MDN has service provider port protection -->
+
+
+    <div id="mdnPortProtection6p" class="PIAF" style="display: none;">
+
+        <p><b>Definition: </b>6P - MDN has service provider port protection</p>
+
+        <p>This means the cellular number being ported has port protection enabled on their current service provider's network. Port protection is a feature customers can enable to protect against unauthorized porting activity on their cellular number.</p>
+
+        <h3>Solution: </h3>
+
+        <ul style="line-height: 1.5;">
+            <b>Resoluton for other carriers: </b>
+            <ul>
+                <li>Advise the customer to contact their current service provider to assist in removing the port protection feature from their account.</li>
+                <li>Once the port protection is removed, advise the AR they will need to resubmit the port request.</li>
+            </ul>
+        </ul>
+
+
+        <ul style="line-height: 1.5;"><b>Dealing with a Verizon Number Lock</b>
+                <ul>
+                    <li>Advise the customer to turn off number lock feature via the <b>My Verizon App.</b></li>
+                    <li>In the My Verizon App, open the <b>Menu</b> and tap <b>Account.</b></li>
+                    <li>Tap <b>Account Settings.</b></li>
+                    <li>Tap <b>Number Lock.</b></li>
+                    <li>Tap the toggle to turn off Number Lock.</li>
+                    <li>Once the Number Lock is removed, advise the AR to resubmit the port request.</li>
+                    <li><a href="https://learning.cricketwireless.com/student/page/540373-porting-transferring-from-verizon-rr-6p?sid=b5fcef02-54d4-49d1-a853-ff6027fb3b69&sid_i=0" target="_blank">Porting: Transferring from Verizon (RR 6B)</a></li>
+                </ul>
+        </ul>
+
+        
+        <h3>Exceed Article for Reference: </h3>
+            <ul><a href="https://learning.cricketwireless.com/student/activity/1374195-ros-resolution-required-6p-mdn-has-service-provider-port-protection" target="_blank">ROS: Resolution Required - 6P - MDN has service provider port protection</a></ul>
+
+    </div>
+
+
+    <!--8A Info -->
+
+    <div id="8Ainfo" style="display: none;" class="PIAF">
+
+        <p><b>Definition: </b>8A - Account number required or incorrect</p>
+
+        <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
+
+            <div class="buttonContainer">
+                <button type="button" class="PIAFbutton" id="showPortIn1" onclick="showPortIn(1)">Port-In</button>
+                <button type="button" class="PIAFbutton" id="showPortOut1" onclick="showPortOut(1)">Port-out</button>
+            </div>
+            
+
+  
+
+
+                
+
+                <div id="portInAccount" style="display: none;">
+
+                    <h3>Solution: </h3>
+                    <p>Contact the customer's current service provider to obtain the correct account number. Once the account number is obtained, advised the AR to update the port-in request in Aktivate.</p>
+                
+                    <h3>Verbiage: </h3>
+                    <i>When contacting the OSP use verbiage below.</i>
+                    <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+                    I have a customer who is porting their number to Cricket and I need assistance 
+                    with an 8A account number incorrect. I also have the customer available 
+                    and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
+
+                    <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/page/1119797-ros-helpdesk-porting-policy-for-resolution-required" target="_blank">ROS: Helpdesk Porting Policy for Resolution Required</a></ul>
+
+                </div>
+                
+
+       
+
+
+
+                <div id="portOutAccount" style="display: none;">
+
+                    <h3>Solution: </h3>
+                    <p>The NSP will contact the RHD to assist in obtaining the correct account number. 
+                    It is important to verify the customer's information before proceeding to provide the customer their 
+                    correct account number.</p>
+
+                    <h3>Verification Checklist: </h3>
+
+
+                    <ul style="line-height: 1.5;">
+                        <li><b style="color: red">Important: </b> RHD must speak with the customer to verify the information below.</li>
+                        <ul>
+
+                            <li><b>Note: </b>If account cannot be accessed with customer's pin or security question, advise the customer to visit their local cricket wireless store to perform an account bypass request.</li>
+                            <li><b>Note: </b>If the customer is <b>not</b> on the phone with the NSP, advise the NSP to call back with the customer for appropriate verification.</li>
+                        
+                        </ul>
+                    
+                            <li>Verify Customer's Full Name</li>
+                            <li>Verify Customer's  4-digit pin number or security question in Voyage.</li>
+                        </ul>
+                    </ul>
+            
+                    <ul>
+                        Once the account has been successfully accessed, provide the customer their BAN number to finish the port out process. <i>See reference picture below</i>
+                    </ul>
+
+                    <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/page/1119797-ros-helpdesk-porting-policy-for-resolution-required" target="_blank">ROS: Helpdesk Porting Policy for Resolution Required</a></ul>
+
+                </div>
+                
+  
+
+       
+
+    </div>
+
+    <!--8C Info -->
+
+    <div id="8Cinfo" style="display: none;" class="PIAF">
+
+        <p><b>Definition: </b>8C - Password/PIN required or incorrect</p>
+
+        <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
+
+        <div class="buttonContainer">
+            <button type="button" class="PIAFbutton" id="showPortIn2" onclick="showPortIn(2)">Port-In</button>
+            <button type="button" class="PIAFbutton" id="showPortOut2" onclick="showPortOut(2)">Port-out</button>
+        </div>
+
+   
+   
+                
+
+                <div id="portInPassword" style="display: none;">
+                    <h3>Solution: </h3>
+                    <p>Contact the customer's current service provider to obtain the correct password/PIN. Once the password/PIN is obtained, advised the AR to update the port-in request in Aktivate. 
+                    
+                    </p>
+                
+                    <h3>Verbiage: </h3>
+                    <i>When contacting the OSP use verbiage below.</i>
+                    <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+                    I have a customer who is porting their number to Cricket and I need assistance 
+                    with an 8C password/PIN incorrect. I also have the customer available 
+                    and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
+
+                    <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/page/1119797-ros-helpdesk-porting-policy-for-resolution-required" target="_blank">ROS: Helpdesk Porting Policy for Resolution Required</a></ul>
+
+                </div>
+
+
+                <div id="portOutPassword" style="display: none; margin-top: 30px;">
+                    <h3>Solution: </h3>
+                    <p>Verify that the account number provided by the customer is accurate and corresponds to their current service provider.</p>
+
+                    <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/page/1119797-ros-helpdesk-porting-policy-for-resolution-required" target="_blank">ROS: Helpdesk Porting Policy for Resolution Required</a></ul>
+
+                </div>
+
+
+      
+
+    </div>
+
+    <!--8D Info-->
+
+    <div id="8Dinfo" style="display: none;" class="PIAF">
+
+        <p><b>Definition: </b>8D - Zip code required or incorrect </p>
+
+        <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
+
+        <div class="buttonContainer">
+            <button type="button" class="PIAFbutton" id="showPortIn3" onclick="showPortIn(3)">Port-In</button>
+            <button type="button" class="PIAFbutton" id="showPortOut3" onclick="showPortOut(3)">Port-out</button>
+        </div>
+
+
+ 
+                
+
+                <div id="portInZipcode" style="display: none;">
+                    <h3>Solution: </h3>
+                    <p>Contact the customer's current service provider to obtain the correct zip code. Once the zip code is obtained, advised the AR to update the port-in request in Aktivate. 
+                    
+                    </p>
+                
+                    <h3>Verbiage: </h3>
+                    <i>When contacting the OSP use verbiage below.</i>
+                    <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+                    I have a customer who is porting their number to Cricket and I need assistance 
+                    with an 8D zip code required or incorrect. I also have the customer available 
+                    and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
+
+                    <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/page/1119797-ros-helpdesk-porting-policy-for-resolution-required" target="_blank">ROS: Helpdesk Porting Policy for Resolution Required</a></ul>
+
+                </div>
+
+     
+
+   
+
+                <div id="portOutZipcode" style="display: none;">
+                    <h3>Solution: </h3>
+                    <p>The NSP will contact the RHD to assist in obtaining the correct zip code on the account. 
+                    It is important to verify the customer's information before proceeding to provide the customer their 
+                    correct zip code.</p>
+
+                    <h3>Verification Checklist: </h3>
+                    
+
+                    <ul style="line-height: 1.5;">
+                        <li><b style="color: red">Important: </b> RHD must speak with the customer to verify the information below.</li>
+                        <ul>
+
+                            <li><b>Note: </b>If account cannot be accessed with customer's pin or security question, advise the customer to visit their local cricket wireless store to perform an account bypass request.</li>
+                            <li><b>Note: </b>If the customer is <b>not</b> on the phone with the NSP, advise the NSP to call back with the customer for appropriate verification.</li>
+                        
+                        </ul>
+                    
+                            <li>Verify Customer's Full Name</li>
+                            <li>Verify Customer's  4-digit pin number or security question in Voyage.</li>
+                        </ul>
+                    </ul>
+            
+                    <ul>
+                        Once the account has been successfully accessed, provide the customer their zip code. Navigate to the Settings -> Account in voyage to view the 
+                    correct zip code on the account. <i>See reference picture below</i>
+                    </ul>
+
+                        <div>
+
+                        </div>
+
+                        <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/page/1119797-ros-helpdesk-porting-policy-for-resolution-required" target="_blank">ROS: Helpdesk Porting Policy for Resolution Required</a></ul>
+
+
+                </div>
+                
+
+                
+
+   
+
+   
+
+    </div>
+
+
+    <!--8E Info-->
+
+    <div id="8Einfo" style="display: none;" class="PIAF">
+
+        <p><b>Defintion: </b>8E - First name required or incorrect </p>
+
+        <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
+
+        <div class="buttonContainer">
+            <button type="button" class="PIAFbutton" id="showPortIn4" onclick="showPortIn(4)">Port-In</button>
+            <button type="button" class="PIAFbutton" id="showPortOut4" onclick="showPortOut(4)">Port-out</button>
+
+        </div>
+
+     
+                
+
+                <div id="portInFirstName" style="display: none;">
+
+                    <h3>Solution: </h3>
+                    <p>Contact the customer's current service provider to obtain the correct first name. Once the first name is obtained, advised the AR to update the port-in request in Aktivate. 
+                    
+                    </p>
+                
+                    <h3>Verbiage: </h3>
+                    <i>When contacting the OSP use verbiage below.</i>
+                    <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+                    I have a customer who is porting their number to Cricket and I need assistance 
+                    with an 8E first name required or incorrect. I also have the customer available 
+                    and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
+
+                    <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/activity/1373982-ros-resolution-required-8e-8f-first-name-last-name-incorrect" target="_blank">ROS: Resolution Required - 8E/8F - First Name / Last Name Incorrect</a></ul>
+
+                </div>
+
+                
+         
+
+    
+                
+
+                <div id="portOutFirstName" style="display: none;">
+
+                    <h3>Solution: </h3>
+                    <p>The NSP will contact the RHD to assist in obtaining the correct first name on the account. 
+                    It is important to verify the customer's information before proceeding to provide the customer their 
+                    correct account information.</p>
+
+                    <h3>Verification Checklist: </h3>
+
+            <ul style="line-height: 1.5;">
+                    <li><b style="color: red">Important: </b> RHD must speak with the customer to verify the information below.</li>
+                    <ul>
+
+                    <li><b>Note: </b>If account cannot be accessed with customer's pin or security question, advise the customer to visit their local cricket wireless store to perform an account bypass request.</li>
+                    <li><b>Note: </b>If the customer is <b>not</b> on the phone with the NSP, advise the NSP to call back with the customer for appropriate verification.</li>
+                        
+                    </ul>
+                    
+                    <li>Verify Customer's Full Name</li>
+                    <li>Verify Customer's  4-digit pin number or security question in Voyage.</li>
+                </ul>
+            </ul>
+            
+            <ul>
+                Once the account has been successfully accessed, provide the customer the correct first name on the account. <i>See reference picture below</i>
+            </ul>
+
+                        <div>
+
+                        </div>
+
+                    <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/activity/1373982-ros-resolution-required-8e-8f-first-name-last-name-incorrect" target="_blank">ROS: Resolution Required - 8E/8F - First Name / Last Name Incorrect</a></ul>
+
+                </div>
+
+                
+       
+
+        
+
+    </div>
+
+    <!--8F Info -->
+
+    <div id="8Finfo" style="display: none;" class="PIAF">
+
+        <p><b>Defintion: </b>8F - Last name required or incorrect </p>
+
+        <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
+
+        <div class="buttonContainer">
+            <button type="button" class="PIAFbutton" id="showPortIn5" onclick="showPortIn(5)">Port-In</button>
+            <button type="button" class="PIAFbutton" id="showPortOut5" onclick="showPortOut(5)">Port-out</button>
+
+        </div>
+
+          
+                
+
+                <div id="portInLastName" style="display: none;">
+                    <h3>Solution: </h3>
+                    <p>Contact the customer's current service provider to obtain the correct last name. Once the last name is obtained, advised the AR to update the port-in request in Aktivate. 
+                    
+                    </p>
+                
+                    <h3>Verbiage: </h3>
+                    <i>When contacting the OSP use verbiage below.</i>
+                    <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+                    I have a customer who is porting their number to Cricket and I need assistance 
+                    with an 8F last name required or incorrect. I also have the customer available 
+                    and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
+
+                    <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/activity/1373982-ros-resolution-required-8e-8f-first-name-last-name-incorrect" target="_blank">ROS: Resolution Required - 8E/8F - First Name / Last Name Incorrect</a></ul>
+
+                </div>
+
+       
+
+       
+                
+
+                <div id="portOutLastName" style="display: none;">
+                    <h3>Solution: </h3>
+                    <p>The NSP will contact the RHD to assist in obtaining the correct last name on the account. 
+                    It is important to verify the customer's information before proceeding to provide the customer their 
+                    correct account information.</p>
+
+
+
+                <h3>Verification Checklist: </h3>
+                    
+
+                <ul style="line-height: 1.5;">
+                    <li><b style="color: red">Important: </b> RHD must speak with the customer to verify the information below.</li>
+                    <ul>
+
+                        <li><b>Note: </b>If account cannot be accessed with customer's pin or security question, advise the customer to visit their local cricket wireless store to perform an account bypass request.</li>
+                    <li><b>Note: </b>If the customer is <b>not</b> on the phone with the NSP, advise the NSP to call back with the customer for appropriate verification.</li>
+                        
+                    </ul>
+                    
+                    <li>Verify Customer's Full Name</li>
+                    <li>Verify Customer's  4-digit pin number or security question in Voyage.</li>
+                </ul>
+            </ul>
+            
+            <ul>
+                Once the account has been successfully accessed, provide the customer the correct last name on the account. <i>See reference picture below</i>
+            </ul>
+
+                            <div>
+
+                            </div>
+
+
+                        <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/activity/1373982-ros-resolution-required-8e-8f-first-name-last-name-incorrect" target="_blank">ROS: Resolution Required - 8E/8F - First Name / Last Name Incorrect</a></ul>
+
+                <div>
+
+           
+                
+        
+
+    </div>
+
+
+
+
+
+
+
+
+<script src="script.js"></script>
+
+</section>
