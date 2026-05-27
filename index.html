@@ -1,11 +1,20 @@
+
 <link rel="stylesheet" href="styles.css">
+
+
 
 <section class="section1">
 
-    <div style="margin-bottom: 20px;">
-        <h1>ROS Porting: Resolution Required Resolutions</h1>
 
-        <p>Select a resolution required code from the list below to see the appropriate solution for either port-ins or port-outs.</p>
+    <div id="imageModal" class="expand">
+            <span class="close" onclick="closeImage()">&times;</span>
+            <img class="expand-content" id="expandedImg">
+    </div>
+
+    <div style="margin-bottom: 20px;">
+        <!-- <h1>ROS Porting: Resolution Required Resolutions</h1> -->
+
+        <p style="text-align: left; font-size: 19px !important">Select a resolution required code from the list below to see the appropriate solution for either port-ins or port-outs.</p>
 
         <p>
         <select id="selectResolution" onchange="showInfo(this.value)">
@@ -27,7 +36,7 @@
             <option value="8D">8D - Zip code required or incorrect</option>
             <option value="8E">8E - First name required or incorrect </option>
             <option value="8F">8F - Last name required or incorrect </option>
-            <option value="OTH">Code not listed / All other codes</option>
+            <!-- <option value="OTH">Code not listed / All other codes</option> -->
         </select>
     </p>
         
@@ -61,18 +70,21 @@
 
             <ul>
                 <li style="margin-bottom: 12px; font-weight: bold;">Short Description</li>
-                <ul style="margin-bottom: 12px;"><i>CTN: <input type="text" class="PIAFinput" placeholder="Enter Customers Number"> Port In Activation Failed in TLG.</i></ul>
-                <ul><button type="button" class="PIAFbutton" onclick="copyAmdocs(1)">Copy Text</button></ul>
+                <ul style="margin-bottom: 12px;">
+                    <i style="font-size: 16px;">CTN: <input type="text" id="ctnAmdocs1" class="PIAFinput" placeholder="Enter Customers Number"> Port In Activation Failed in TLG.</i>
+                </ul>
+                <ul><button type="button" class="PIAFbutton2" onclick="copyAmdocs(1)">Copy Text</button></ul>
             </ul>
 
             <ul>
                 <li style="margin-bottom: 12px; font-weight: bold;">Description</li>
-                <ul style="margin-bottom: 12px;"><i>AMDOCS - Please replay activation of port request # <input type="text" class="PIAFinput" placeholder="Enter Port Request Number"> for CTN <input type="text" class="PIAFinput" placeholder="Enter Customers Number"> on BAN <input type="text" class="PIAFinput" placeholder="Enter BAN Number"></i></ul>
-                <ul><button type="button" class="PIAFbutton" onclick="copyAmdocs(2)">Copy Text</button></ul>
+                <ul style="margin-bottom: 12px;">
+                    <i style="font-size: 16px;">AMDOCS - Please replay activation of port request # <input type="text" class="PIAFinput" id="portNumber2" placeholder="Enter Port Request Number"> for CTN <input type="text" class="PIAFinput" id="ctnAmdocs2" placeholder="Enter Customers Number"> on BAN <input type="text" class="PIAFinput" id="banNumber2" placeholder="Enter BAN Number"></i></ul>
+                <ul><button type="button" class="PIAFbutton2" onclick="copyAmdocs(2)">Copy Text</button></ul>
             </ul>
 
             <h3>ServiceNow Classification: </h3>
-            <img src="PIAF.png" class="imgsrc1">
+            <img src="https://exceed-primary-production-public-uploads.s3.amazonaws.com/markdown_editor_uploads/exceedlms-com/3414491/547cb179-445b-4bc9-9a55-4847c70e9b2d/piaf.png" class="imgsrc1" onclick="expandImage(this)">
             
         </div>
 
@@ -111,7 +123,7 @@
 
         <h3>ServiceNow Classification</h3>
 
-        <img class="imgsrc1" src="ICtimer.png">
+        <img class="imgsrc1" src="https://exceed-primary-production-public-uploads.s3.amazonaws.com/markdown_editor_uploads/exceedlms-com/3414491/7a1eb5ad-2f71-4066-ac54-00c078a56bd1/ictimer.png" onclick="expandImage(this)">
 
         <h3>Exceed Article for Reference:</h3>
         <ul><a href="https://learning.cricketwireless.com/student/activity/1232327-ros-ic-timer-expired" target="_blank">ROS: IC Timer Expired</a></ul>
@@ -124,7 +136,7 @@
 
     <div id="notEligible" class="PIAF" style="display: none;">
 
-        <img class="imgsrc1" src="notEligibleToPortin.png" style="width: 85%;">
+        <img class="imgsrc1" src="https://exceed-primary-production-public-uploads.s3.amazonaws.com/markdown_editor_uploads/exceedlms-com/3414491/3ca9eee0-c313-4c95-99a7-7bee6fd0744c/noteligibletoportin.png" style="width: 85%;" onclick="expandImage(this)">
 
         <p>This indicates there is an active port request open for CTN.</p>
 
@@ -140,19 +152,19 @@
 
             <ul>
                 <li style="margin-bottom: 12px; font-weight: bold;">Short Description</li>
-                <ul style="margin-bottom: 12px;"><i>CTN: <input type="text" class="PIAFinput" placeholder="Enter Customers Number"> Please cancel all pending port requests. </i></ul>
-                <ul><button type="button" class="PIAFbutton" onclick="copyAmdocs(3)">Copy Text</button></ul>
+                <ul style="margin-bottom: 12px;"><i style="font-size: 16px;">CTN: <input type="text" id="ctnAmdocs3" class="PIAFinput" placeholder="Enter Customers Number"> Please cancel all pending port requests. </i></ul>
+                <ul><button type="button" class="PIAFbutton2" onclick="copyAmdocs(3)">Copy Text</button></ul>
             </ul>
 
             <ul>
                 <li style="margin-bottom: 12px; font-weight: bold;">Description</li>
-                <ul style="margin-bottom: 12px;"><i>AMDOCS - Please cancel all pending port requests for CTN <input type="text" class="PIAFinput" placeholder="Enter Customers Number"> as it is causing the eligibility check to fail.</i></ul>
-                <ul><button type="button" class="PIAFbutton" onclick="copyAmdocs(4)">Copy Text</button></ul>
+                <ul style="margin-bottom: 12px;"><i style="font-size: 16px;">AMDOCS - Please cancel all pending port requests for CTN <input type="text" id="ctnAmdocs4" class="PIAFinput" placeholder="Enter Customers Number"> as it is causing the eligibility check to fail.</i></ul>
+                <ul><button type="button" class="PIAFbutton2" onclick="copyAmdocs(4)">Copy Text</button></ul>
             </ul>
             
 
             <h3>ServiceNow Classification: </h3>
-            <img src="notEligible.png" class="imgsrc1">
+            <img src="https://exceed-primary-production-public-uploads.s3.amazonaws.com/markdown_editor_uploads/exceedlms-com/3414491/8c16e821-76a0-4d98-94aa-2540839de87c/noteligible.png" class="imgsrc1" onclick="expandImage(this)">
             
         </div>
 
@@ -183,7 +195,7 @@
         </ul>
 
         <h3>ServiceNow Classification: </h3>
-        <img src="1P.png" class="imgsrc1">
+        <img src="https://exceed-primary-production-public-uploads.s3.amazonaws.com/markdown_editor_uploads/exceedlms-com/3414491/7807e635-ad21-4648-b358-db24ad5b0708/1p.png" class="imgsrc1" onclick="expandImage(this)">
 
         <h3>Exceed Article for Reference: </h3>
         <ul><a href="https://learning.cricketwireless.com/student/activity/1406155-ros-resolution-required-1p-multiple-reasons" target="_blank">ROS: Resolution Required - 1P - (Multiple Reasons)</a></ul>
@@ -200,8 +212,8 @@
         <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
 
         <div class="buttonContainer">
-            <button type="button" class="PIAFbutton" onclick="showPortIn(6)">Port-In</button>
-            <button type="button" class="PIAFbutton" onclick="showPortOut(6)">Port-out</button>
+            <button type="button" class="PIAFbutton" id="showPortIn6" onclick="showPortIn(6)">Port-In</button>
+            <button type="button" class="PIAFbutton" id="showPortOut6" onclick="showPortOut(6)">Port-out</button>
         </div>
 
         <div id="mdnPortIn" style="display: none;">
@@ -215,7 +227,7 @@
             </ul>
 
             <ul><b>Example: </b></ul>
-            <ul><img style="width: 100%;" src="PEARS.png" class="imgsrc1"></ul>
+            <ul><img style="width: 100%;" src="https://exceed-primary-production-public-uploads.s3.amazonaws.com/markdown_editor_uploads/exceedlms-com/3414491/6a4043ad-7c34-4b7a-b8ed-f9695bc9be60/pears.png" class="imgsrc1" onclick="expandImage(this)"></ul>
 
             <ul><b>Information in PEARS and port request match.</b>
                 <ul>
@@ -255,8 +267,8 @@
         <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
 
         <div class="buttonContainer">
-            <button type="button" class="PIAFbutton" onclick="showPortIn(7)">Port-In</button>
-            <button type="button" class="PIAFbutton" onclick="showPortOut(7)">Port-out</button>
+            <button type="button" class="PIAFbutton" id="showPortIn7" onclick="showPortIn(7)">Port-In</button>
+            <button type="button" class="PIAFbutton" id="showPortOut7" onclick="showPortOut(7)">Port-out</button>
         </div>
 
         <div id="ntpPortIn" style="display: none;">
@@ -307,7 +319,7 @@
 
             <h3>Verbiage: </h3>
             <i>When contacting the OSP use verbiage below.</i>
-            <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+            <p class="verbiage">"I am calling from the Cricket Wireless Porting Department on a recorded line. 
             I have a customer who is porting their number to Cricket and I need assistance 
             with a 6B number transfer pin required or incorrect. I also have the customer available 
             and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
@@ -318,11 +330,11 @@
 
             <p style="font-weight: bold; margin-top: 50px;">A 6B can also trigger if there is an account lock on a Cricket Wireless account. The account lock feature can be enabled on the account.</p>
 
-            <img class="imgsrc1" src="smgAccountlock.png" style="width: 100%;">
+            <img class="imgsrc1" src="https://exceed-primary-production-public-uploads.s3.amazonaws.com/markdown_editor_uploads/exceedlms-com/3414491/45db5fc4-e5b3-44eb-a8a9-5faef489a338/smgaccountlock.png" style="width: 100%;" onclick="expandImage(this)">
 
             <p style="font-weight: bold;">Verify the Account Lock is enabled in Voyage.</p>
 
-            <img class="imgsrc1" src="accountLock.png" style="width: 100%;">
+            <img class="imgsrc1" src="https://exceed-primary-production-public-uploads.s3.amazonaws.com/markdown_editor_uploads/exceedlms-com/3414491/6766ebfc-0cbb-4a83-84d0-c931c03cfad2/accountlock.png" style="width: 100%;" onclick="expandImage(this)">
 
             <h3>Solution: </h3>
             <ul style="line-height: 1.6;">
@@ -373,8 +385,8 @@
         <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
 
         <div class="buttonContainer">
-            <button type="button" class="PIAFbutton" onclick="showPortIn(8)">Port-In</button>
-            <button type="button" class="PIAFbutton" onclick="showPortOut(8)">Port-out</button>
+            <button type="button" class="PIAFbutton" id="showPortIn8" onclick="showPortIn(8)">Port-In</button>
+            <button type="button" class="PIAFbutton" id="showPortOut8" onclick="showPortOut(8)">Port-out</button>
         </div>
 
         <div id="6cPortIn" style="display: none;">
@@ -390,7 +402,7 @@
 
             <h3>Verbiage: </h3>
             <i>When contacting the OSP use verbiage below.</i>
-            <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+            <p class="verbiage">"I am calling from the Cricket Wireless Porting Department on a recorded line. 
             I have a customer who is porting their number to Cricket and I need assistance 
             with a 6C - Customer's information does not match. I also have the customer available 
             and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
@@ -444,8 +456,8 @@
         <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
 
         <div class="buttonContainer">
-            <button type="button" class="PIAFbutton" onclick="showPortIn(9)">Port-In</button>
-            <button type="button" class="PIAFbutton" onclick="showPortOut(9)">Port-out</button>
+            <button type="button" class="PIAFbutton" id="showPortIn9" onclick="showPortIn(9)">Port-In</button>
+            <button type="button" class="PIAFbutton" id="showPortOut9" onclick="showPortOut(9)">Port-out</button>
         </div>
 
         <div id="mdn6dPortIn" style="display: none;">
@@ -471,7 +483,7 @@
 
             <h3>Verbiage: </h3>
             <i>When contacting the OSP use verbiage below.</i>
-            <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+            <p class="verbiage">"I am calling from the Cricket Wireless Porting Department on a recorded line. 
             I have a customer who is porting their number to Cricket and I need assistance 
             with a 6D - MDN Not Active. I also have the customer available 
             and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
@@ -515,7 +527,7 @@
 
     <div id="delay6g" class="PIAF" style="display: none;">
 
-        <p><b>Definition: </b>6G - Port Complexity</p>
+        <p><b>Definition: </b>6G - Delay / Port Complexity</p>
         <p>This resolution required means the port is in delay, awaiting for a response from their current service provider.</p>
 
         <h3>Solution: </h3>
@@ -535,7 +547,7 @@
 
         <h3>Verbiage: </h3>
             <i>When contacting the OSP use verbiage below.</i>
-            <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+            <p class="verbiage">"I am calling from the Cricket Wireless Porting Department on a recorded line. 
             I have a customer who is porting their number to Cricket Wireless and I need assistance 
             with a 6G Port Delay. I also have the customer available 
             and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
@@ -605,7 +617,7 @@
             <ul>
                 <li>Verify the NLSP and NNSP in SMG.</li>
                 <li>If the NNSP does not match the Cricket SPID of X508 under the NLSP, this indicates there is a duplicate port request. <i>See reference picture below</i></li>
-                <img class="imgsrc1" src="thirdInstance.png" style="width: 100%; margin-top: 20px;">
+                <img class="imgsrc1" src="https://exceed-primary-production-public-uploads.s3.amazonaws.com/markdown_editor_uploads/exceedlms-com/3414491/852dd12a-311b-4f7d-8b27-3b8349778fb5/thirdinstance.png" style="width: 100%; margin-top: 20px;" onclick="expandImage(this)">
                 <li><b>Advise the customer</b> to contact the related carrier which has the customer's pending port request and advise to cancel the request on their behalf.</li>
                 <li>Tier 2 does not need to be contacted for this unless an issue arises which needs further review.</li>
                 <li>Visit Exceed Article for more information: <a href="https://learning.cricketwireless.com/student/page/3292074-ros-porting-port-in-resolution-required-6n?sid=f60804ef-e071-427d-820b-e20753496964&sid_i=5" target="_blank">ROS Porting: Port-In Resolution Required 6N</a></li>
@@ -619,9 +631,19 @@
 
     <div id="mdnPortProtection6p" class="PIAF" style="display: none;">
 
+
         <p><b>Definition: </b>6P - MDN has service provider port protection</p>
 
         <p>This means the cellular number being ported has port protection enabled on their current service provider's network. Port protection is a feature customers can enable to protect against unauthorized porting activity on their cellular number.</p>
+
+        <p style="text-align: center; margin-top: 20px;"><i>Select an option below: </i></p>
+
+        <div class="buttonContainer">
+                <button type="button" class="PIAFbutton" id="showPortIn10" onclick="showPortIn(10)">Port-In</button>
+                <button type="button" class="PIAFbutton" id="showPortOut10" onclick="showPortOut(10)">Port-out</button>
+        </div>
+
+    <div id="portIn6p" style="display: none">
 
         <h3>Solution: </h3>
 
@@ -648,7 +670,64 @@
 
         
         <h3>Exceed Article for Reference: </h3>
-            <ul><a href="https://learning.cricketwireless.com/student/activity/1374195-ros-resolution-required-6p-mdn-has-service-provider-port-protection" target="_blank">ROS: Resolution Required - 6P - MDN has service provider port protection</a></ul>
+        <ul><a href="https://learning.cricketwireless.com/student/activity/1374195-ros-resolution-required-6p-mdn-has-service-provider-port-protection" target="_blank">ROS: Resolution Required - 6P - MDN has service provider port protection</a></ul>
+
+
+
+    </div>
+
+    <div id="portOut6p" style="display: none">
+
+        <h3>Solution: </h3>
+            <p>The NSP will contact the RHD to assist in obtaining the Number Transfer Pin (NTP). 
+            It is important to verify the customer's information before proceeding to assist in retrieving an NTP.</p>
+
+            <p>If after successfully verifying customer with the steps shown below, we must guide the customer in generating a new NTP.</p>
+
+            <h3>Verification Checklist: </h3>
+
+
+            <ul style="line-height: 1.5;">
+                <li><b style="color: red">Important: </b> RHD must speak with the customer to verify the information below.</li>
+                <ul>
+
+                <li><b>Note: </b>If account cannot be accessed with customer's pin or security question, advise the customer to visit their local cricket wireless store to perform an account bypass request.</li>
+                <li><b>Note: </b>If the customer is <b>not</b> on the phone with the NSP, advise the NSP to call back with the customer for appropriate verification.</li>
+                        
+                </ul>
+                    
+                <li>Verify Customer's Full Name</li>
+                <li>Verify Customer's  4-digit pin number or security question in Voyage.</li>
+                </ul>
+            </ul>
+
+            <ul>
+
+
+            </ul>
+            
+                <ul style="line-height: 1.8;">
+                    <b>Once the account has been successfully accessed, advise the customer to follow one of these options below.</b>
+
+                    <ul>
+                        <li>Advise the customer to dial <b>*PORT/*7678</b> or for Spanish-speaking customers <b>*PORTAR/*767827</b> from 
+                        their Cricket device to follow the IVR NTP flow.</li>
+                        <li><b>1-800-CRICKET or 611</b> allows any line on the account to generate an NTP, not just the line being ported out.</li>
+                        <li>Advise the customer to visit website <b><a href="https://www.cricketwireless.com/support/account-management/numbertransferpin.html?utm_source=Base_Communications&utm_medium=SMS&utm_campaign=Number_Transfer_Pin" target="_blank">cricketwireless.com/numbertransferpin</a></b>. Customer will need to be autheticated using
+                        their MyCricket login credentials to follow the steps to generate an NTP which will then be sent on their device via SMS.</li>
+                        <li>For more options visit exceed article: <a href="https://learning.cricketwireless.com/student/page/1228744-number-transfer-pin-ntp-porting-out-of-cricket?sid=4753853e-fa29-4848-a306-74c14e0bb4f5&sid_i=0" target="_blank">Number Transfer Pin (NTP) - Porting out of Cricket</a></li>
+                    </ul>
+
+                </ul>
+
+                    <h3>Exceed Article for Reference: </h3>
+                    <ul><a href="https://learning.cricketwireless.com/student/page/1119797-ros-helpdesk-porting-policy-for-resolution-required" target="_blank">ROS: Helpdesk Porting Policy for Resolution Required</a></ul>
+
+
+
+    </div>
+
+        
 
     </div>
 
@@ -675,11 +754,11 @@
                 <div id="portInAccount" style="display: none;">
 
                     <h3>Solution: </h3>
-                    <p>Contact the customer's current service provider to obtain the correct account number. Once the account number is obtained, advised the AR to update the port-in request in Aktivate.</p>
+                    <p>Contact the customer's current service provider to obtain the correct account number. Once the account number is obtained, advise the AR to update the port-in request in Aktivate.</p>
                 
                     <h3>Verbiage: </h3>
                     <i>When contacting the OSP use verbiage below.</i>
-                    <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+                    <p class="verbiage">"I am calling from the Cricket Wireless Porting Department on a recorded line. 
                     I have a customer who is porting their number to Cricket and I need assistance 
                     with an 8A account number incorrect. I also have the customer available 
                     and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
@@ -719,7 +798,7 @@
                     </ul>
             
                     <ul>
-                        Once the account has been successfully accessed, provide the customer their BAN number to finish the port out process. <i>See reference picture below</i>
+                        Once the account has been successfully accessed, provide the customer their BAN number to finish the port out process. 
                     </ul>
 
                     <h3>Exceed Article for Reference: </h3>
@@ -752,13 +831,13 @@
 
                 <div id="portInPassword" style="display: none;">
                     <h3>Solution: </h3>
-                    <p>Contact the customer's current service provider to obtain the correct password/PIN. Once the password/PIN is obtained, advised the AR to update the port-in request in Aktivate. 
+                    <p>Contact the customer's current service provider to obtain the correct password/PIN. Once the password/PIN is obtained, advise the AR to update the port-in request in Aktivate. 
                     
                     </p>
                 
                     <h3>Verbiage: </h3>
                     <i>When contacting the OSP use verbiage below.</i>
-                    <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+                    <p class="verbiage">"I am calling from the Cricket Wireless Porting Department on a recorded line. 
                     I have a customer who is porting their number to Cricket and I need assistance 
                     with an 8C password/PIN incorrect. I also have the customer available 
                     and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
@@ -771,7 +850,35 @@
 
                 <div id="portOutPassword" style="display: none; margin-top: 30px;">
                     <h3>Solution: </h3>
-                    <p>Verify that the account number provided by the customer is accurate and corresponds to their current service provider.</p>
+                    <ul>An NSP will contact the RHD for a pin/password incorrect in their port out request. This should indicate the customer's account pin may be incorrect, and not their NTP.</ul>
+
+                    <ul>RHD must verify customer and pin provided in Voyage.</ul>
+
+                    <h3>Verification Checklist: </h3>
+                    
+
+                    <ul style="line-height: 1.5;">
+                        <li><b style="color: red">Important: </b> RHD must speak with the customer to verify the information below.</li>
+                        <ul>
+
+                            <li><b>Note: </b>If account cannot be accessed with customer's pin or security question, advise the customer to visit their local cricket wireless store to perform an account bypass request.</li>
+                            <li><b>Note: </b>If the customer is <b>not</b> on the phone with the NSP, advise the NSP to call back with the customer for appropriate verification.</li>
+                        
+                        </ul>
+                    
+                            <li>Verify Customer's Full Name</li>
+                            <li>Verify Customer's  4-digit pin number or security question in Voyage.</li>
+                        </ul>
+                    </ul>
+            
+                    <ul>
+                        <b>Result: </b>
+                        <ul>
+                            <li>If the account is successfully accessed with the pin the customer provided, advise the customer to use that pin for the port out request. </li>
+                            <li>If the account cannot be accessed with the pin provided, refer customer to contact Cricket customer care or visit a local Cricket store to perform an account bypass request. </li>
+                        </ul>
+                    </ul>
+            
 
                     <h3>Exceed Article for Reference: </h3>
                     <ul><a href="https://learning.cricketwireless.com/student/page/1119797-ros-helpdesk-porting-policy-for-resolution-required" target="_blank">ROS: Helpdesk Porting Policy for Resolution Required</a></ul>
@@ -802,13 +909,13 @@
 
                 <div id="portInZipcode" style="display: none;">
                     <h3>Solution: </h3>
-                    <p>Contact the customer's current service provider to obtain the correct zip code. Once the zip code is obtained, advised the AR to update the port-in request in Aktivate. 
+                    <p>Contact the customer's current service provider to obtain the correct zip code. Once the zip code is obtained, advise the AR to update the port-in request in Aktivate. 
                     
                     </p>
                 
                     <h3>Verbiage: </h3>
                     <i>When contacting the OSP use verbiage below.</i>
-                    <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+                    <p class="verbiage">"I am calling from the Cricket Wireless Porting Department on a recorded line. 
                     I have a customer who is porting their number to Cricket and I need assistance 
                     with an 8D zip code required or incorrect. I also have the customer available 
                     and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
@@ -852,6 +959,8 @@
 
                         <div>
 
+                            <img class="imgsrc1" src="https://exceed-primary-production-public-uploads.s3.amazonaws.com/markdown_editor_uploads/exceedlms-com/3414491/083929f7-0c96-4f01-b540-69ddbecc3fa4/zipcode.png" style="width: 100%;" onclick="expandImage(this)">
+
                         </div>
 
                         <h3>Exceed Article for Reference: </h3>
@@ -890,13 +999,13 @@
                 <div id="portInFirstName" style="display: none;">
 
                     <h3>Solution: </h3>
-                    <p>Contact the customer's current service provider to obtain the correct first name. Once the first name is obtained, advised the AR to update the port-in request in Aktivate. 
+                    <p>Contact the customer's current service provider to obtain the correct first name. Once the first name is obtained, advise the AR to update the port-in request in Aktivate. 
                     
                     </p>
                 
                     <h3>Verbiage: </h3>
                     <i>When contacting the OSP use verbiage below.</i>
-                    <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+                    <p class="verbiage">"I am calling from the Cricket Wireless Porting Department on a recorded line. 
                     I have a customer who is porting their number to Cricket and I need assistance 
                     with an 8E first name required or incorrect. I also have the customer available 
                     and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
@@ -936,7 +1045,7 @@
             </ul>
             
             <ul>
-                Once the account has been successfully accessed, provide the customer the correct first name on the account. <i>See reference picture below</i>
+                Once the account has been successfully accessed, provide the customer the correct first name on the account. 
             </ul>
 
                         <div>
@@ -974,13 +1083,13 @@
 
                 <div id="portInLastName" style="display: none;">
                     <h3>Solution: </h3>
-                    <p>Contact the customer's current service provider to obtain the correct last name. Once the last name is obtained, advised the AR to update the port-in request in Aktivate. 
+                    <p>Contact the customer's current service provider to obtain the correct last name. Once the last name is obtained, advise the AR to update the port-in request in Aktivate. 
                     
                     </p>
                 
                     <h3>Verbiage: </h3>
                     <i>When contacting the OSP use verbiage below.</i>
-                    <p>"I am calling from the Cricket Wireless Porting Department on a recorded line. 
+                    <p class="verbiage">"I am calling from the Cricket Wireless Porting Department on a recorded line. 
                     I have a customer who is porting their number to Cricket and I need assistance 
                     with an 8F last name required or incorrect. I also have the customer available 
                     and can conference them onto the call at your request. The customer’s telephone number is _____"</p>
@@ -1021,7 +1130,7 @@
             </ul>
             
             <ul>
-                Once the account has been successfully accessed, provide the customer the correct last name on the account. <i>See reference picture below</i>
+                Once the account has been successfully accessed, provide the customer the correct last name on the account. 
             </ul>
 
                             <div>
@@ -1047,6 +1156,594 @@
 
 
 
-<script src="script.js"></script>
+<script>
+
+    function showPortIn(number) {
+
+    const showPortIn = document.getElementById("showPortIn" + number);
+    const showPortOut = document.getElementById("showPortOut" + number);
+    
+    if (number === 1) {
+        document.getElementById("portInAccount").style.display = '';
+        document.getElementById("portOutAccount").style.display = 'none';
+        //document.getElementById("portInAccount").scrollIntoView({ behavior: 'smooth' });
+
+        showPortIn.classList.add("selected");
+        showPortOut.classList.remove("selected");
+
+    }
+
+    if (number === 2) {
+        document.getElementById("portInPassword").style.display = '';
+        document.getElementById("portOutPassword").style.display = 'none';
+        //document.getElementById("portInPassword").scrollIntoView({ behavior: 'smooth' });
+
+        showPortIn.classList.add("selected");
+        showPortOut.classList.remove("selected");
+        
+    }
+
+    if (number === 3) {
+        document.getElementById("portInZipcode").style.display = '';
+        document.getElementById("portOutZipcode").style.display = 'none';
+        //document.getElementById("portInZipcode").scrollIntoView({ behavior: 'smooth' });
+
+        showPortIn.classList.add("selected");
+        showPortOut.classList.remove("selected");
+
+    }
+
+    if (number === 4) {
+        document.getElementById("portInFirstName").style.display = '';
+        document.getElementById("portOutFirstName").style.display = 'none';
+        //document.getElementById("portInFirstName").scrollIntoView({ behavior: 'smooth' });
+
+        showPortIn.classList.add("selected");
+        showPortOut.classList.remove("selected");
+       
+    }
+
+    if (number === 5) {
+        document.getElementById("portInLastName").style.display = '';
+        document.getElementById("portOutLastName").style.display = 'none';
+
+        showPortIn.classList.add("selected");
+        showPortOut.classList.remove("selected");
+        
+        //document.getElementById("portInLastName").scrollIntoView({ behavior: 'smooth' });
+    }
+
+    if (number === 6) {
+        document.getElementById("mdnPortIn").style.display = '';
+        document.getElementById("mdnPortOut").style.display = 'none';
+
+        showPortIn.classList.add("selected");
+        showPortOut.classList.remove("selected");
+    }
+
+    if (number === 7) {
+        document.getElementById("ntpPortIn").style.display = '';
+        document.getElementById("ntpPortOut").style.display = 'none';
+
+        showPortIn.classList.add("selected");
+        showPortOut.classList.remove("selected");
+    }
+
+    if (number === 8) {
+        document.getElementById("6cPortOut").style.display = 'none';
+        document.getElementById("6cPortIn").style.display = '';
+
+        showPortIn.classList.add("selected");
+        showPortOut.classList.remove("selected");
+    }
+
+    if (number === 9) {
+        document.getElementById("mdn6dPortOut").style.display = 'none';
+        document.getElementById("mdn6dPortIn").style.display = '';
+
+        showPortIn.classList.add("selected");
+        showPortOut.classList.remove("selected");
+    }
+
+    if (number === 10) {
+
+        document.getElementById("portIn6p").style.display = '';
+        document.getElementById("portOut6p").style.display = 'none';
+
+        showPortOut.classList.remove("selected");
+        showPortIn.classList.add("selected");
+
+    }
+
+}
+
+
+function showPortOut(number) {
+
+    const showPortIn = document.getElementById("showPortIn" + number);
+    const showPortOut = document.getElementById("showPortOut" + number);
+    
+
+    if (number === 1) {
+        document.getElementById("portOutAccount").style.display = '';
+        document.getElementById("portInAccount").style.display = 'none';
+
+        showPortOut.classList.add("selected");
+        showPortIn.classList.remove("selected");
+    }
+
+    if (number === 2) {
+        document.getElementById("portOutPassword").style.display = '';
+        document.getElementById("portInPassword").style.display = 'none';
+
+        showPortOut.classList.add("selected");
+        showPortIn.classList.remove("selected");
+    }
+
+    if (number === 3) {
+        document.getElementById("portOutZipcode").style.display = '';
+        document.getElementById("portInZipcode").style.display = 'none';
+
+        showPortOut.classList.add("selected");
+        showPortIn.classList.remove("selected");
+    }
+
+    if (number === 4) {
+        document.getElementById("portOutFirstName").style.display = '';
+        document.getElementById("portInFirstName").style.display = 'none';
+
+        showPortOut.classList.add("selected");
+        showPortIn.classList.remove("selected");
+    }
+
+    if (number === 5) {
+        document.getElementById("portOutLastName").style.display = '';
+        document.getElementById("portInLastName").style.display = 'none';
+
+        showPortOut.classList.add("selected");
+        showPortIn.classList.remove("selected");
+    }
+
+    if (number === 6) {
+        document.getElementById("mdnPortOut").style.display = '';
+        document.getElementById("mdnPortIn").style.display = 'none';
+
+        showPortOut.classList.add("selected");
+        showPortIn.classList.remove("selected");
+    }
+
+    if (number === 7) {
+        document.getElementById("ntpPortIn").style.display = 'none';
+        document.getElementById("ntpPortOut").style.display = '';
+
+        showPortOut.classList.add("selected");
+        showPortIn.classList.remove("selected");
+    }
+
+    if (number === 8) {
+        document.getElementById("6cPortOut").style.display = '';
+        document.getElementById("6cPortIn").style.display = 'none';
+
+        showPortOut.classList.add("selected");
+        showPortIn.classList.remove("selected");
+    }
+
+    if (number === 9) {
+        document.getElementById("mdn6dPortOut").style.display = '';
+        document.getElementById("mdn6dPortIn").style.display = 'none';
+
+        showPortOut.classList.add("selected");
+        showPortIn.classList.remove("selected");
+    }
+
+    if (number === 10) {
+        document.getElementById("portIn6p").style.display = 'none';
+        document.getElementById("portOut6p").style.display = '';
+
+        showPortOut.classList.add("selected");
+        showPortIn.classList.remove("selected");
+    }
+}
+
+function showInfo(value) {
+
+    closeOptions();
+
+    const accountNumberInfo = document.getElementById("8Ainfo");
+    const accountPasswordInfo = document.getElementById("8Cinfo");
+    const zipCodeInfo = document.getElementById("8Dinfo");
+    const firstNameInfo = document.getElementById("8Einfo");
+    const lastNameInfo = document.getElementById("8Finfo");
+
+    const portInActivationFailed = document.getElementById("portInActivationFailed");
+    const icTimer = document.getElementById("icTimer");
+    const notEligible = document.getElementById("notEligible");
+    const multipleReasons = document.getElementById("1pMultipleReasons");
+    const MDNnotFound = document.getElementById("MDNnotFound");
+    const ntpRequired = document.getElementById("ntpRequired");
+    const customerInfo6c = document.getElementById("customerInfo6c");
+    const mdnNotActive6d = document.getElementById("mdnNotActive6d");
+    const delay6g = document.getElementById("delay6g");
+    const duplicate6M = document.getElementById("duplicate6M");
+    const duplicatePort6N = document.getElementById("duplicatePort6N");
+    const mdnPortProtection6P = document.getElementById("mdnPortProtection6p");
+    
+    
+
+
+    if (value === "PIAF" || value === "icte" || value === "MDN" || value === "1P" || value === "6A" || value === "6B" || value === "6C" || value === "6D" 
+        || value === "6G" || value === "6M" || value === "6N" || value === "6P" || value === "OTH")  
+    {
+        accountNumberInfo.style.display = 'none';
+        accountPasswordInfo.style.display = 'none';
+        zipCodeInfo.style.display = 'none';
+        firstNameInfo.style.display = 'none';
+        lastNameInfo.style.display = 'none';
+    }
+
+    if (value === "8A" || value === "8C" || value === "8D" || value === "8E" || value === "8F") {
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+         notEligible.style.display = 'none';
+         multipleReasons.style.display = 'none';
+         MDNnotFound.style.display = 'none';
+         ntpRequired.style.display = 'none';
+         customerInfo6c.style.display = 'none';
+         mdnNotActive6d.style.display = 'none';
+         delay6g.style.display = 'none';
+         duplicate6M.style.display = 'none';
+         duplicatePort6N.style.display = 'none';
+         mdnPortProtection6P.style.display = 'none';
+    }
+
+    if (value === "PIAF") {
+        portInActivationFailed.style.display = '';
+        icTimer.style.display = 'none';
+         notEligible.style.display = 'none';
+         multipleReasons.style.display = 'none';
+         MDNnotFound.style.display = 'none';
+         ntpRequired.style.display = 'none';
+         customerInfo6c.style.display = 'none';
+         mdnNotActive6d.style.display = 'none';
+         delay6g.style.display = 'none';
+         duplicate6M.style.display = 'none';
+         duplicatePort6N.style.display = 'none';
+         mdnPortProtection6P.style.display = 'none';
+    }
+
+    if (value === "icte") {
+        icTimer.style.display = '';
+        portInActivationFailed.style.display = 'none';
+        notEligible.style.display = 'none';
+        multipleReasons.style.display = 'none';
+        MDNnotFound.style.display = 'none';
+        ntpRequired.style.display = 'none';
+        customerInfo6c.style.display = 'none';
+        mdnNotActive6d.style.display = 'none';
+        delay6g.style.display = 'none';
+        duplicate6M.style.display = 'none';
+        duplicatePort6N.style.display = 'none';
+        mdnPortProtection6P.style.display = 'none';
+    }
+
+    if (value === "MDN") {
+        notEligible.style.display = '';
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+        multipleReasons.style.display = 'none';
+        MDNnotFound.style.display = 'none';
+        ntpRequired.style.display = 'none';
+        customerInfo6c.style.display = 'none';
+        mdnNotActive6d.style.display = 'none';
+        delay6g.style.display = 'none';
+        duplicate6M.style.display = 'none';
+        duplicatePort6N.style.display = 'none';
+        mdnPortProtection6P.style.display = 'none';
+    }
+
+    if (value === "1P") {
+        multipleReasons.style.display = '';
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+        notEligible.style.display = 'none';
+        MDNnotFound.style.display = 'none';
+        ntpRequired.style.display = 'none';
+        customerInfo6c.style.display = 'none';
+        mdnNotActive6d.style.display = 'none';
+        delay6g.style.display = 'none';
+        duplicate6M.style.display = 'none';
+        duplicatePort6N.style.display = 'none';
+        mdnPortProtection6P.style.display = 'none';
+    }
+
+    if (value === "6A") {
+        MDNnotFound.style.display = '';
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+        notEligible.style.display = 'none';
+        multipleReasons.style.display = 'none';
+        ntpRequired.style.display = 'none';
+        customerInfo6c.style.display = 'none';
+        mdnNotActive6d.style.display = 'none';
+        delay6g.style.display = 'none';
+        duplicate6M.style.display = 'none';
+        duplicatePort6N.style.display = 'none';
+        mdnPortProtection6P.style.display = 'none';
+    }
+
+    if (value === "6B") {
+        ntpRequired.style.display = '';
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+        notEligible.style.display = 'none';
+        multipleReasons.style.display = 'none';
+        MDNnotFound.style.display = 'none';
+        customerInfo6c.style.display = 'none';
+        mdnNotActive6d.style.display = 'none';
+        delay6g.style.display = 'none';
+        duplicate6M.style.display = 'none';
+        duplicatePort6N.style.display = 'none';
+        mdnPortProtection6P.style.display = 'none';
+    }
+
+    if (value === "6C") {
+        customerInfo6c.style.display = '';
+        ntpRequired.style.display = 'none';
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+        notEligible.style.display = 'none';
+        multipleReasons.style.display = 'none';
+        MDNnotFound.style.display = 'none';
+        mdnNotActive6d.style.display = 'none';
+        delay6g.style.display = 'none';
+        duplicate6M.style.display = 'none';
+        duplicatePort6N.style.display = 'none';
+        mdnPortProtection6P.style.display = 'none';
+    }
+
+    if (value === "6D") {
+        mdnNotActive6d.style.display = '';
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+         notEligible.style.display = 'none';
+         multipleReasons.style.display = 'none';
+         MDNnotFound.style.display = 'none';
+         ntpRequired.style.display = 'none';
+         customerInfo6c.style.display = 'none';
+         delay6g.style.display = 'none';
+         duplicate6M.style.display = 'none';
+         duplicatePort6N.style.display = 'none';
+         mdnPortProtection6P.style.display = 'none';
+
+    }
+
+    if (value === "6G") {
+        delay6g.style.display = '';
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+         notEligible.style.display = 'none';
+         multipleReasons.style.display = 'none';
+         MDNnotFound.style.display = 'none';
+         ntpRequired.style.display = 'none';
+         customerInfo6c.style.display = 'none';
+         mdnNotActive6d.style.display = 'none';
+         duplicate6M.style.display = 'none';
+         duplicatePort6N.style.display = 'none';
+         mdnPortProtection6P.style.display = 'none';
+
+    }
+
+    if (value === "6M") {
+        duplicate6M.style.display = '';
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+         notEligible.style.display = 'none';
+         multipleReasons.style.display = 'none';
+         MDNnotFound.style.display = 'none';
+         ntpRequired.style.display = 'none';
+         customerInfo6c.style.display = 'none';
+         mdnNotActive6d.style.display = 'none';
+         delay6g.style.display = 'none';
+         duplicatePort6N.style.display = 'none';
+         mdnPortProtection6P.style.display = 'none';
+    }
+
+    if (value === "6N") {
+        duplicatePort6N.style.display = '';
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+         notEligible.style.display = 'none';
+         multipleReasons.style.display = 'none';
+         MDNnotFound.style.display = 'none';
+         ntpRequired.style.display = 'none';
+         customerInfo6c.style.display = 'none';
+         mdnNotActive6d.style.display = 'none';
+         delay6g.style.display = 'none';
+         duplicate6M.style.display = 'none';
+         mdnPortProtection6P.style.display = 'none';
+    }
+
+    if (value === "6P") {
+        mdnPortProtection6P.style.display = '';
+        portInActivationFailed.style.display = 'none';
+        icTimer.style.display = 'none';
+         notEligible.style.display = 'none';
+         multipleReasons.style.display = 'none';
+         MDNnotFound.style.display = 'none';
+         ntpRequired.style.display = 'none';
+         customerInfo6c.style.display = 'none';
+         mdnNotActive6d.style.display = 'none';
+         delay6g.style.display = 'none';
+         duplicate6M.style.display = 'none';
+         duplicatePort6N.style.display = 'none';
+
+    }
+
+
+
+    if (value === "8A") {
+        accountNumberInfo.style.display = '';
+        accountPasswordInfo.style.display = 'none';
+        zipCodeInfo.style.display = 'none';
+        firstNameInfo.style.display = 'none';
+        lastNameInfo.style.display = 'none';
+    }
+
+    if (value === "8C") {
+        accountNumberInfo.style.display = 'none';
+        accountPasswordInfo.style.display = '';
+        zipCodeInfo.style.display = 'none';
+        firstNameInfo.style.display = 'none';
+        lastNameInfo.style.display = 'none';
+    }
+
+    if (value === "8D") {
+        accountNumberInfo.style.display = 'none';
+        accountPasswordInfo.style.display = 'none';
+        zipCodeInfo.style.display = '';
+        firstNameInfo.style.display = 'none';
+        lastNameInfo.style.display = 'none';
+    }
+
+    if (value === "8E") {
+        accountNumberInfo.style.display = 'none';
+        accountPasswordInfo.style.display = 'none';
+        zipCodeInfo.style.display = 'none';
+        firstNameInfo.style.display = '';
+        lastNameInfo.style.display = 'none';
+    }
+
+    if (value === "8F") {
+        accountNumberInfo.style.display = 'none';
+        accountPasswordInfo.style.display = 'none';
+        zipCodeInfo.style.display = 'none';
+        firstNameInfo.style.display = 'none';
+        lastNameInfo.style.display = '';
+    }
+}
+
+
+function copyAmdocs(number) {
+    
+    const ctnAmdocs1 = document.getElementById("ctnAmdocs1").value;
+    const portNumber2 = document.getElementById("portNumber2").value;
+    const ctnAmdocs2 = document.getElementById("ctnAmdocs2").value;
+    const banNumber2 = document.getElementById("banNumber2").value;
+    const ctnAmdocs3 = document.getElementById("ctnAmdocs3").value;
+    const ctnAmdocs4 = document.getElementById("ctnAmdocs4").value;
+
+    let textToCopy = "";
+
+    if (number === 1) {
+        textToCopy = `CTN: ${ctnAmdocs1} Port In Activation Failed in TLG.`;
+        alert("Text copied to clipboard: " + "\n\n" + textToCopy + "\n\n" + "Include this verbiage in the short description when finishing the ticket." );
+    }
+
+    if (number === 2) {
+        textToCopy = `AMDOCS - Please replay activation of port request # ${portNumber2} for CTN ${ctnAmdocs2} on BAN ${banNumber2}`;
+        alert("Text copied to clipboard: " + "\n\n" + textToCopy + "\n\n" + "Include this verbiage in the description when finishing the ticket." );
+    }
+
+    if (number === 3) {
+        textToCopy = `CTN: ${ctnAmdocs3} Please cancel all pending port requests.`;
+        alert("Text copied to clipboard: " + "\n\n" + textToCopy + "\n\n" + "Include this verbiage in the short description when finishing the ticket." );
+    }
+
+    if (number === 4) {
+        textToCopy = `AMDOCS - Please cancel all pending port requests for CTN ${ctnAmdocs4} as it is causing the eligibility check to fail.`;
+        alert("Text copied to clipboard: " + "\n\n" + textToCopy + "\n\n" + "Include this verbiage in the description when finishing the ticket." );
+    }
+
+    navigator.clipboard.writeText(textToCopy);
+}
+
+
+function closeOptions() {
+
+    document.getElementById("showPortIn1").classList.remove("selected");
+    document.getElementById("showPortIn2").classList.remove("selected");
+    document.getElementById("showPortIn3").classList.remove("selected");
+    document.getElementById("showPortIn4").classList.remove("selected");
+    document.getElementById("showPortIn5").classList.remove("selected");
+    document.getElementById("showPortIn6").classList.remove("selected");
+    document.getElementById("showPortIn7").classList.remove("selected");
+    document.getElementById("showPortIn8").classList.remove("selected");
+    document.getElementById("showPortIn9").classList.remove("selected");
+    document.getElementById("showPortIn10").classList.remove("selected");
+
+    document.getElementById("showPortOut1").classList.remove("selected");
+    document.getElementById("showPortOut2").classList.remove("selected");
+    document.getElementById("showPortOut3").classList.remove("selected");
+    document.getElementById("showPortOut4").classList.remove("selected");
+    document.getElementById("showPortOut5").classList.remove("selected");
+    document.getElementById("showPortOut6").classList.remove("selected");
+    document.getElementById("showPortOut7").classList.remove("selected");
+    document.getElementById("showPortOut8").classList.remove("selected");
+    document.getElementById("showPortOut9").classList.remove("selected");
+    document.getElementById("showPortOut10").classList.remove("selected");
+
+
+    document.getElementById("portOutAccount").style.display = 'none';
+    document.getElementById("portInAccount").style.display = 'none';
+
+    document.getElementById("portOutPassword").style.display = 'none';
+    document.getElementById("portInPassword").style.display = 'none';
+
+    document.getElementById("portOutZipcode").style.display = 'none';
+    document.getElementById("portInZipcode").style.display = 'none';
+
+    document.getElementById("portOutFirstName").style.display = 'none';
+    document.getElementById("portInFirstName").style.display = 'none';
+
+    document.getElementById("portOutLastName").style.display = 'none';
+    document.getElementById("portInLastName").style.display = 'none';
+
+    document.getElementById("mdnPortOut").style.display = 'none';
+    document.getElementById("mdnPortIn").style.display = 'none';
+
+    document.getElementById("ntpPortIn").style.display = 'none';
+    document.getElementById("ntpPortOut").style.display = 'none';
+
+    document.getElementById("6cPortOut").style.display = 'none';
+    document.getElementById("6cPortIn").style.display = 'none';
+
+    document.getElementById("mdn6dPortOut").style.display = 'none';
+    document.getElementById("mdn6dPortIn").style.display = 'none';
+
+    document.getElementById("portIn6p").style.display = 'none';
+    document.getElementById("portOut6p").style.display = 'none';
+  
+
+}
+
+
+function expandImage(img) {
+    const expand = document.getElementById('imageModal');
+    const expandedImg = document.getElementById('expandedImg');
+
+    expand.style.display = 'flex';
+    expandedImg.src = img.src;
+    expandedImg.alt = img.alt;
+}
+
+function closeImage() {
+    const expand = document.getElementById('imageModal');
+    expand.style.display = 'none';
+}
+
+window.onclick = function(event) {
+    const expand = document.getElementById('imageModal');
+    if (event.target === expand) {
+        closeImage();
+    }
+}
+
+
+
+
+
+
+
+</script>
 
 </section>
